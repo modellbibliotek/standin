@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="openEHR/v1/Template">
+    <id>1675f1eb-9355-4658-8662-e7a2ac10454f</id>
+    <name>screening-smoking</name>
+    <description>
+        <original_author>
+            <item>
+                <key>date</key>
+                <value>2019-01-22</value>
+            </item>
+        </original_author>
+        <lifecycle_state>unmanaged</lifecycle_state>
+        <details/>
+        <other_details>
+            <item>
+                <key>licence</key>
+                <value>This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</value>
+            </item>
+            <item>
+                <key>custodian_organisation</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>original_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>original_publisher</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>custodian_namespace</key>
+                <value>org.openehr</value>
+            </item>
+        </other_details>
+    </description>
+    <annotations path="[openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1]/data[at0001]/items[at0089]">
+        <items>
+            <item>
+                <key>derive_from</key>
+                <value>/data[at0001]/items[at0029.1]/items[at0052]</value>
+            </item>
+        </items>
+    </annotations>
+    <annotations path="[openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1]/data[at0001]/items[at0016]">
+        <items>
+            <item>
+                <key>derive_from</key>
+                <value>/data[at0001]/items[at0029.1]/items[at0014]</value>
+            </item>
+        </items>
+    </annotations>
+    <definition
+        archetype_id="openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1"
+        concept_name="Sammanfattning av rökvanor för tobak"
+        name="Screening cigarettrökning" xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:EVALUATION">
+        <Rule max="0" path="/data[at0001]/items[at0043]"/>
+        <Rule max="0" path="/data[at0001]/items[at0015]"/>
+        <Rule max="0" path="/data[at0001]/items[at0080]"/>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0053]"/>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0081]">
+            <constraint xsi:type="tem:multipleConstraint">
+                <includedTypes>Count</includedTypes>
+                <includedTypes>Text</includedTypes>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0013]"/>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0082]"/>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0030]">
+            <constraint xsi:type="tem:multipleConstraint">
+                <includedTypes>Coded_text</includedTypes>
+                <includedTypes>Text</includedTypes>
+            </constraint>
+        </Rule>
+        <Rule name="Typisk användning (cig/dag)" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0023]">
+            <constraint xsi:type="tem:quantityConstraint"/>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0065]">
+            <constraint xsi:type="tem:quantityConstraint">
+                <unitMagnitude>
+                    <unit>g/wk</unit>
+                    <minMagnitude>0.0</minMagnitude>
+                    <includesMaximum>false</includesMaximum>
+                    <includesMinimum>true</includesMinimum>
+                </unitMagnitude>
+                <unitMagnitude>
+                    <unit>g/d</unit>
+                    <minMagnitude>0.0</minMagnitude>
+                    <includesMaximum>false</includesMaximum>
+                    <includesMinimum>true</includesMinimum>
+                </unitMagnitude>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0025]">
+            <constraint xsi:type="tem:countConstraint">
+                <minMagnitude>0</minMagnitude>
+                <includesMaximum>false</includesMaximum>
+                <includesMinimum>true</includesMinimum>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0064, 'Senaste (ev. pågående) rökningsperiod']/items[at0087]"/>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0017]">
+            <constraint xsi:type="tem:countConstraint">
+                <minMagnitude>0</minMagnitude>
+                <includesMaximum>false</includesMaximum>
+                <includesMinimum>true</includesMinimum>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0029, 'Cigaretter']/items[at0069]"/>
+        <Rule max="0" path="/data[at0001]/items[at0074]">
+            <constraint xsi:type="tem:countConstraint">
+                <minMagnitude>0</minMagnitude>
+                <includesMaximum>false</includesMaximum>
+                <includesMinimum>true</includesMinimum>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/data[at0001]/items[at0019]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0071]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0085]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0075]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0076]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0079]"/>
+        <Rule max="0" path="/protocol[at0021]/items[at0072]">
+            <constraint xsi:type="tem:multipleConstraint">
+                <includedTypes>Count</includedTypes>
+                <includedTypes>Quantity</includedTypes>
+            </constraint>
+        </Rule>
+        <Rule max="0" path="/protocol[at0021]/items[at0022]"/>
+    </definition>
+    <integrity_checks
+        archetype_id="openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">4E279F3908EB0B1E7782E979C83A27DE</digest>
+    </integrity_checks>
+</template>
