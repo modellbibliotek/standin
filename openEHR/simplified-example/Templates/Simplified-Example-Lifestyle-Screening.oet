@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns="openEHR/v1/Template">
+    <id>8fb0fe07-d133-4331-a6e0-cab247dcfdbb</id>
+    <name>Simplified-Example-Lifestyle-Screening</name>
+    <description>
+        <original_author>
+            <item>
+                <key>date</key>
+                <value>2018-12-06</value>
+            </item>
+        </original_author>
+        <lifecycle_state>unmanaged</lifecycle_state>
+        <details/>
+        <other_details>
+            <item>
+                <key>licence</key>
+                <value>This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</value>
+            </item>
+            <item>
+                <key>custodian_organisation</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>original_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>original_publisher</key>
+                <value>openEHR Foundation</value>
+            </item>
+            <item>
+                <key>custodian_namespace</key>
+                <value>org.openehr</value>
+            </item>
+            <item>
+                <key>MD5-CAM-1.0.1</key>
+                <value>11dd01c0ab0ce79c1971c011335efbd8</value>
+            </item>
+            <item>
+                <key>PARENT:MD5-CAM-1.0.1</key>
+                <value>15173A4BF38FA171E47BBE704F3E0940</value>
+            </item>
+        </other_details>
+    </description>
+    <annotations path="[openEHR-EHR-COMPOSITION.encounter.v1]/content[openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1]/data[at0001]/items[at0016]">
+        <items>
+            <item>
+                <key>derive.copy.value</key>
+                <value>/data[at0001]/items[at0029]/items[at0014]</value>
+            </item>
+            <item>
+                <key>visibility</key>
+                <value>hidden</value>
+            </item>
+        </items>
+    </annotations>
+    <annotations path="[openEHR-EHR-COMPOSITION.encounter.v1]/content[openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1]/data[at0001]/items[at0089]">
+        <items>
+            <item>
+                <key>derive.source</key>
+                <value>/data[at0001]/items[at0029]/items[at0052]</value>
+            </item>
+            <item>
+                <key>visibility</key>
+                <value>hidden</value>
+            </item>
+            <item>
+                <key>derive.map</key>
+                <value>[['at0091','at0006'], ['at0061', 'at0003'], ['at0059','at0005'] ]</value>
+            </item>
+        </items>
+    </annotations>
+    <definition archetype_id="openEHR-EHR-COMPOSITION.encounter.v1"
+        concept_name="Vårdtillfälle"
+        name="Screening Levnadsvanor (förenklat exempel)"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:COMPOSITION">
+        <Content
+            archetype_id="openEHR-EHR-EVALUATION.physical_activity_summary.v0"
+            concept_name="Fysisk aktivitet summering"
+            name="Fysisk aktivitet" path="/content" xsi:type="tem:EVALUATION">
+            <Rule max="0" path="/data[at0001]/items[at0002]">
+                <constraint xsi:type="tem:multipleConstraint">
+                    <includedTypes>Coded_text</includedTypes>
+                    <includedTypes>Text</includedTypes>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0003]"/>
+            <Rule max="0" path="/data[at0001]/items[at0005]"/>
+            <Rule max="0" path="/data[at0001]/items[at0006]"/>
+            <Rule name="Vardagsmotion" path="/data[at0001]/items[at0008]">
+                <constraint xsi:type="tem:quantityConstraint">
+                    <excludedUnits>1/wk</excludedUnits>
+                    <excludedUnits>1/mo</excludedUnits>
+                </constraint>
+            </Rule>
+            <Rule name="Fysisk träning" path="/data[at0001]/items[at0007]">
+                <constraint xsi:type="tem:quantityConstraint">
+                    <excludedUnits>1/wk</excludedUnits>
+                    <excludedUnits>1/mo</excludedUnits>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/protocol[at0014]/items[at0016]"/>
+            <Items
+                archetype_id="openEHR-EHR-CLUSTER.physical_activity_calculation.v0"
+                path="/protocol[at0014]/items[at0015]" xsi:type="tem:CLUSTER"/>
+        </Content>
+        <Content
+            archetype_id="openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1"
+            path="/content" xsi:type="tem:EVALUATION">
+            <Rule max="0" path="/data[at0001]/items[at0043]"/>
+            <Rule max="0" path="/data[at0001]/items[at0015]"/>
+            <Rule max="0" path="/data[at0001]/items[at0080]"/>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0053]"/>
+            <Rule name="Senaste (eller pågående) episod" path="/data[at0001]/items[at0029]/items[at0064]/items[at0081]">
+                <constraint xsi:type="tem:multipleConstraint">
+                    <includedTypes>Count</includedTypes>
+                    <includedTypes>Text</includedTypes>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0064]/items[at0013]"/>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0064]/items[at0082]"/>
+            <Rule path="/data[at0001]/items[at0029]/items[at0064]/items[at0023]">
+                <constraint xsi:type="tem:quantityConstraint">
+                    <excludedUnits>1/wk</excludedUnits>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0064]/items[at0065]">
+                <constraint xsi:type="tem:quantityConstraint">
+                    <unitMagnitude>
+                        <unit>g/wk</unit>
+                        <minMagnitude>0.0</minMagnitude>
+                        <includesMaximum>false</includesMaximum>
+                        <includesMinimum>true</includesMinimum>
+                    </unitMagnitude>
+                    <unitMagnitude>
+                        <unit>g/d</unit>
+                        <minMagnitude>0.0</minMagnitude>
+                        <includesMaximum>false</includesMaximum>
+                        <includesMinimum>true</includesMinimum>
+                    </unitMagnitude>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0064]/items[at0025]">
+                <constraint xsi:type="tem:countConstraint">
+                    <minMagnitude>0</minMagnitude>
+                    <includesMaximum>false</includesMaximum>
+                    <includesMinimum>true</includesMinimum>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0064]/items[at0087]"/>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0017]">
+                <constraint xsi:type="tem:countConstraint">
+                    <minMagnitude>0</minMagnitude>
+                    <includesMaximum>false</includesMaximum>
+                    <includesMinimum>true</includesMinimum>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0029]/items[at0069]"/>
+            <Rule max="0" path="/data[at0001]/items[at0074]">
+                <constraint xsi:type="tem:countConstraint">
+                    <minMagnitude>0</minMagnitude>
+                    <includesMaximum>false</includesMaximum>
+                    <includesMinimum>true</includesMinimum>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/data[at0001]/items[at0019]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0071]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0085]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0075]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0076]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0079]"/>
+            <Rule max="0" path="/protocol[at0021]/items[at0072]">
+                <constraint xsi:type="tem:multipleConstraint">
+                    <includedTypes>Count</includedTypes>
+                    <includedTypes>Quantity</includedTypes>
+                </constraint>
+            </Rule>
+            <Rule max="0" path="/protocol[at0021]/items[at0022]"/>
+        </Content>
+    </definition>
+    <integrity_checks
+        archetype_id="openEHR-EHR-COMPOSITION.encounter.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">15173A4BF38FA171E47BBE704F3E0940</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-EVALUATION.physical_activity_summary.v0"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">2E5B397FB8CAFFB53BA4B7A1E2CE1502</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-CLUSTER.physical_activity_calculation.v0"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">5b1c008a093d40b84e34f0da8ef391d9</digest>
+    </integrity_checks>
+    <integrity_checks
+        archetype_id="openEHR-EHR-EVALUATION.tobacco_smoking_summary.v1"
+        xmlns:tem="openEHR/v1/Template"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:ArchetypeIntegrity">
+        <digest id="MD5-CAM-1.0.1">4E279F3908EB0B1E7782E979C83A27DE</digest>
+    </integrity_checks>
+</template>
